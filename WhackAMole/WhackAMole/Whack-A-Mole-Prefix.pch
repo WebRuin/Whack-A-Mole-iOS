@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'Whack-A-Mole' target in the 'Whack-A-Mole' project
-//
-
-#ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-#endif
