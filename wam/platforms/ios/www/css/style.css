@@ -1,3 +1,8 @@
+*, *:before, *:after
+{
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
 body
 {
     font-family: sans-serif;
@@ -18,13 +23,32 @@ h1 { margin: .5em; }
 #defaultCountdown
 {
     margin-top: -.5em;
-    float: right;
+    width: 50%;
+    float: left;
+    text-align: right;
 }
 
 #defaultScore
 {
     margin-top: -.5em;
+    width: 50%;
     float: left;
+    text-align: left;
+}
+
+#topScore
+{
+    width: 60%;
+    float: left;
+    text-align: left;
+}
+
+#reset{
+    width: 40%;
+    float: left;
+    text-align: center;
+    padding: 3px;
+    background: #f00;
 }
 
 .stats{

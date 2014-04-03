@@ -12,6 +12,11 @@
 			whackAMole.difficultyFactor = .25; // score to decriment per ms
 			whackAMole.loopSpeed = 200;
 			whackAMole.buttons;
+			window.localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
+			
+			$( document ).ready(function() {
+			    $('#topScore').text("Top Score " + window.localStorage.getItem( 'com_smithdesign_wam_topScore' ));
+            });
 			
 			//timer
 			whackAMole.gameLoop = function(){
@@ -19,6 +24,8 @@
 			   		$('#defaultCountdown').text('Time is up');
 			 		$(".glow").removeClass('glow');
 			 		whackAMole.currentScore = 0;
+			 		window.localStorage.setItem( 'com_smithdesign_wam_topScore', whackAMole.successfulHits);
+			 	    $('#topScore').text("Top Score " + window.localStorage.getItem( 'com_smithdesign_wam_topScore' ));
 			   }
 			   else {
 					if($(".glow").length == 0){
@@ -39,19 +46,20 @@
 			 whackAMole.updateUI = function() {
 			 	$('#defaultCountdown').text(whackAMole.currentScore);
 			 	$('#defaultScore').text(whackAMole.successfulHits);
+			 	$('#reset').click( function () {
+			 	    window.localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
+                });
 			 }
 			
 			 //Score
 			  $(function () {
 			 	  buttons = $(".container .box").toArray();
-			 	  //$('.container.').bind('selectstart', function(){return false;});
 			 	  
 			      $('.container	.box').click(function () {
 			 		if($(this).hasClass('glow')){
 						$(this).removeClass('glow');
 						whackAMole.successfulHits ++;
 						if(whack){
-							//whack.stop();
 							whack.play();
 						}
 					}
@@ -59,15 +67,21 @@
 			      });
 			  });
 			 
-			 var t = setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed)
+			 var t = setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed);
+			 
+             $('#reset').click( function () {
+                window.localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
+             });
 		</script>
 	</head>
 	<body>
 		<center>
 		<h1>Whack-A-Mole</h1>
 		<div class="stats">
-			<div id="defaultCountdown">Time</div>
 			<div id="defaultScore">Score</div>
+			<div id="defaultCountdown">Time</div>
+			<div id="topScore"></div>
+			<div id="reset">Reset</div>
 		</div>
         <div class="container">
             <div class="box"></div>
