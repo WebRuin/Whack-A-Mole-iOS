@@ -17,13 +17,13 @@
 			whackAMole.gameLoop = function(){
 			   if (whackAMole.currentScore <= 0){
 			   		$('#defaultCountdown').text('Time is up');
-			 		$(".active").removeClass("active");
+			 		$(".glow").removeClass('glow');
 			 		whackAMole.currentScore = 0;
 			   }
 			   else {
-					if($(".active").length == 0){
+					if($(".glow").length == 0){
 						whackAMole.randomnumber=Math.floor(Math.random()*buttons.length);
-						$(buttons[whackAMole.randomnumber]).addClass('active');
+						$(buttons[whackAMole.randomnumber]).addClass('glow');
 						if(newMole) {
 							newMole.play();
 						}
@@ -43,12 +43,12 @@
 			
 			 //Score
 			  $(function () {
-			 	  buttons = $(".container .button").toArray();
+			 	  buttons = $(".container .box").toArray();
 			 	  //$('.container.').bind('selectstart', function(){return false;});
 			 	  
-			      $('.container	.button').click(function () {
-			 		if($(this).hasClass("active")){
-						$(this).removeClass('active');
+			      $('.container	.box').click(function () {
+			 		if($(this).hasClass('glow')){
+						$(this).removeClass('glow');
 						whackAMole.successfulHits ++;
 						if(whack){
 							//whack.stop();
@@ -69,23 +69,17 @@
 			<div id="defaultCountdown">Time</div>
 			<div id="defaultScore">Score</div>
 		</div>
-		<div class="all">
-			<div class="container">
-				<div class="button red">@</div>
-				<div class="button purple">@</div>
-				<div class="button green">@</div>
-			</div>
-			<div class="container">
-				<div class="button red">@</div>
-				<div class="button purple">@</div>
-				<div class="button green">@</div>
-			</div>
-			<div class="container">
-				<div class="button red">@</div>
-				<div class="button purple">@</div>
-				<div class="button green">@</div>
-			</div>
-		</div>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
 		<!-- Sounds -->
 		<audio id="whack" preload="auto" src="sounds/whack.mp3">
 		</audio>
