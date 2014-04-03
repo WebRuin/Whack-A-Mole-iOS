@@ -1,95 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Whack-A-Mole</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script>
-			var whackAMole = {}; 
-			whackAMole.successfulHits = 0;
-			whackAMole.currentScore = 10000;
-			whackAMole.difficultyFactor = .25; // score to decriment per ms
-			whackAMole.loopSpeed = 200;
-			whackAMole.buttons;
-			
-			//timer
-			whackAMole.gameLoop = function(){
-			   if (whackAMole.currentScore <= 0){
-			   		$('#defaultCountdown').text('Time is up');
-			 		$(".active").removeClass("active");
-			 		whackAMole.currentScore = 0;
-			   }
-			   else {
-					if($(".active").length == 0){
-						whackAMole.randomnumber=Math.floor(Math.random()*buttons.length);
-						$(buttons[whackAMole.randomnumber]).addClass('active');
-						if(newMole) {
-							newMole.play();
-						}
-					}
-					else{
-			 			whackAMole.currentScore = whackAMole.currentScore - (whackAMole.difficultyFactor * whackAMole.loopSpeed);
-			 		}
-			 		whackAMole.updateUI();
-			    	t=setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed);
-			   }
-			 }
-			 
-			 whackAMole.updateUI = function() {
-			 	$('#defaultCountdown').text(whackAMole.currentScore);
-			 	$('#defaultScore').text(whackAMole.successfulHits);
-			 }
-			
-			 //Score
-			  $(function () {
-			 	  buttons = $(".container .button").toArray();
-			 	  //$('.container.').bind('selectstart', function(){return false;});
-			 	  
-			      $('.container	.button').click(function () {
-			 		if($(this).hasClass("active")){
-						$(this).removeClass('active');
-						whackAMole.successfulHits ++;
-						if(whack){
-							//whack.stop();
-							whack.play();
-						}
-					}
-					whackAMole.updateUI();
-			      });
-			  });
-			 
-			 var t = setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed)
-		</script>
-	</head>
-	<body>
-		<center>
-		<h1>Whack-A-Mole</h1>
-		<div class="stats">
-			<div id="defaultCountdown">Time</div>
-			<div id="defaultScore">Score</div>
-		</div>
-		<div class="all">
-			<div class="container">
-				<div class="button red">@</div>
-				<div class="button purple">@</div>
-				<div class="button green">@</div>
-			</div>
-			<div class="container">
-				<div class="button red">@</div>
-				<div class="button purple">@</div>
-				<div class="button green">@</div>
-			</div>
-			<div class="container">
-				<div class="button red">@</div>
-				<div class="button purple">@</div>
-				<div class="button green">@</div>
-			</div>
-		</div>
-		<!-- Sounds -->
-		<audio id="whack" preload="auto" src="sounds/whack.mp3">
-		</audio>
-		<audio id="newMole" src="sounds/new.mp3">
-		</audio>
-	</body>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
 </html>
