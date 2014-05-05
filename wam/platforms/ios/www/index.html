@@ -12,10 +12,10 @@
 			whackAMole.difficultyFactor = .25; // score to decriment per ms
 			whackAMole.loopSpeed = 200;
 			whackAMole.buttons;
-			window.localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
+			whackAMole.topScore = localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
 			
 			$( document ).ready(function() {
-			    $('#topScore').text("Top Score " + window.localStorage.getItem( 'com_smithdesign_wam_topScore' ));
+			    $('#topScore').text("Top Score " + localStorage.getItem( 'com_smithdesign_wam_topScore' ));
             });
 			
 			//timer
@@ -24,8 +24,8 @@
 			   		$('#defaultCountdown').text('Time is up');
 			 		$(".glow").removeClass('glow');
 			 		whackAMole.currentScore = 0;
-			 		window.localStorage.setItem( 'com_smithdesign_wam_topScore', whackAMole.successfulHits);
-			 	    $('#topScore').text("Top Score " + window.localStorage.getItem( 'com_smithdesign_wam_topScore' ));
+			 		localStorage.setItem( 'com_smithdesign_wam_topScore', whackAMole.successfulHits);
+			 	    $('#topScore').text("Top Score " + localStorage.getItem( 'com_smithdesign_wam_topScore' ));
 			   }
 			   else {
 					if($(".glow").length == 0){
@@ -47,7 +47,7 @@
 			 	$('#defaultCountdown').text(whackAMole.currentScore);
 			 	$('#defaultScore').text(whackAMole.successfulHits);
 			 	$('#reset').click( function () {
-			 	    window.localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
+			 	    localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
                 });
 			 }
 			
@@ -70,7 +70,7 @@
 			 var t = setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed);
 			 
              $('#reset').click( function () {
-                window.localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
+                localStorage.setItem( 'com_smithdesign_wam_topScore', 0);
              });
 		</script>
 	</head>

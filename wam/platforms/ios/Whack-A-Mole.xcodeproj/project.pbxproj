@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		190C78A718ED2127003DB694 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190C78A618ED2127003DB694 /* Images.xcassets */; };
+		194CE3CE19184E2900289D5E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 194CE3CD19184E2900289D5E /* GameKit.framework */; };
+		194CE3D119184E4B00289D5E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 194CE3D019184E4B00289D5E /* AudioToolbox.framework */; };
 		19DCDE5418ED1531007DAECB /* www in Resources */ = {isa = PBXBuildFile; fileRef = 19DCDE5318ED1531007DAECB /* www */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -62,6 +64,9 @@
 
 /* Begin PBXFileReference section */
 		190C78A618ED2127003DB694 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Whack-A-Mole/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		194CE3CD19184E2900289D5E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		194CE3CF19184E4B00289D5E /* Whack-A-Mole.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Whack-A-Mole.entitlements"; path = "Whack-A-Mole/Whack-A-Mole.entitlements"; sourceTree = "<group>"; };
+		194CE3D019184E4B00289D5E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		19DCDE5318ED1531007DAECB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,6 +121,8 @@
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				194CE3CE19184E2900289D5E /* GameKit.framework in Frameworks */,
+				194CE3D119184E4B00289D5E /* AudioToolbox.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
 			);
@@ -164,6 +171,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				194CE3CF19184E4B00289D5E /* Whack-A-Mole.entitlements */,
 				19DCDE5318ED1531007DAECB /* www */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF21871DA7A0020F90C /* merges */,
@@ -208,6 +216,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				194CE3D019184E4B00289D5E /* AudioToolbox.framework */,
+				194CE3CD19184E2900289D5E /* GameKit.framework */,
 				5AEE5B34173C68D80009041E /* CoreLocation.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -324,6 +334,20 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = C976B4WGKJ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -482,7 +506,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "Whack-A-Mole/Whack-A-Mole.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -507,6 +533,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Whack-A-Mole";
+				PROVISIONING_PROFILE = "02C27678-F84E-493F-B691-CD2462A731CE";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -516,7 +543,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "Whack-A-Mole/Whack-A-Mole.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Whack-A-Mole/Whack-A-Mole-Prefix.pch";
@@ -539,6 +568,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Whack-A-Mole";
+				PROVISIONING_PROFILE = "02C27678-F84E-493F-B691-CD2462A731CE";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
